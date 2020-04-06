@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../config/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Repository接口 -->
+<mapper namespace="com.ruanku.farm.mapper.CommentMapper">
+
+    <select id="selComByProId" resultType="com.ruanku.farm.pojo.comment">
+        select * from comment where Pro_id = #{Pro_id}
+    </select>
+    <select id="user_selComByProId" resultType="com.ruanku.farm.pojo.comment">
+        select * from comment where Pro_id = #{Pro_id}
+    </select>
+    <insert id="user_AddCom">
+        insert into comment(user_id, comment_info, Pro_id) values(#{user_id} ,#{comment_info}, #{Pro_id})
+    </insert>
+
+    <select id="selCommByUserId" resultType="com.ruanku.farm.pojo.comment">
+        select * from comment where user_id= #{user_id}
+    </select>
+
+    <delete id ="del_CommentById">
+        delete from comment where comment_id = #{comment_id}
+    </delete>
+    <select id="user_selComByComId" resultType="com.ruanku.farm.pojo.comment">
+        select * from comment where comment_id = #{comment_id}
+    </select>
+    <update id="user_EditComment" >
+        update comment set comment_info = #{comment_info} where comment_id = #{comment_id}
+    </update>
+</mapper>

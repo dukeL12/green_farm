@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <script>
+        function validateForm(){
+            var account=document.forms["login"]["account"].value;
+            var password=document.forms["login"]["password"].value;
+            var password2=document.forms["login"]["password2"].value;
+            var name=document.forms["login"]["name"].value;
+            var email=document.forms["login"]["email"].value;
+            var phone=document.forms["login"]["phone"].value;
+            var address=document.forms["login"]["address"].value;
+            if (account==null || account==""){
+                alert("账号必须填写");
+                return false;
+            }
+            if (password==null || password==""){
+                alert("密码必须填写");
+                return false;
+            }
+            if (password2==null || password2==""){
+                alert("确认密码必须填写");
+                return false;
+            }
+            if (name==null || name==""){
+                alert("姓名必须填写");
+                return false;
+            }
+            if (email==null || email==""){
+                alert("邮箱必须填写");
+                return false;
+            }
+            if (phone==null || phone==""){
+                alert("电话必须填写");
+                return false;
+            }
+            if (address==null || address==""){
+                alert("联系地址必须填写");
+                return false;
+            }
+            if (password!=password2){
+                alert("两次输入的密码不一致！");
+                return false;
+            }
+        }
+    </script>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="/css/custom.min.css" rel="stylesheet">
+
+</head>
+<body class="login">
+<div class="login_wrapper">
+    <div class="animate form login_form">
+        <section class="login_content">
+            <form action="registerOK" method="post" name="login" onsubmit="return validateForm()">
+                <h1>请注册</h1>
+                <table>
+                    <tr>
+                        <td><h1>账&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp号</h1></td>
+                        <td><input type="text" name="account" id="account"></td>
+                    </tr>
+                    <tr>
+                        <td><h1>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码</h1></td>
+                        <td><input type="password" name="password" id="password"></td>
+                    </tr>
+                    <tr>
+                        <td><h1>确认密码</h1></td>
+                        <td><input type="password" name="password2" id="password2"></td>
+                    </tr>
+                    <tr>
+                        <td><h1>姓&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp名</h1></td>
+                        <td><input type="text" name="name" id="name"></td>
+                    </tr>
+                    <tr>
+                        <td><h1>邮&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp箱</h1></td>
+                        <td><input type="text" name="email" id="email"></td>
+                    </tr>
+                    <tr>
+                        <td><h1>电&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp话</h1></td>
+                        <td><input type="text" name="phone" id="phone"></td>
+                    </tr>
+                    <tr>
+                        <td><h1>联系地址</h1></td>
+                        <td><input type="text" name="address" id="address"></td>
+                    </tr>
+                    <tr>
+                        <td><h1>身&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp份</h1></td>
+                        <td><label> <input type="radio" name="type" id="1" value="1" checked> 用户</label>
+                        <label> <input type="radio" name="type" id="2" value="2"> 商家</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="submit"></td>
+                        <td><a href="login" class="a-active">去登录</a></td>
+                    </tr>
+                    <tr>
+                        <td><h1 th:text="${failedHint}"></h1></td>
+                    </tr>
+                </table>
+            </form>
+        </section>
+    </div>
+</div>
+</body>
+</html>

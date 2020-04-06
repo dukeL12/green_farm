@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>绿色农场</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/datatables/dataTables.bootstrap4.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="">管理员绿色农场主页面</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="teacher">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-sitemap"></i>-->
+                    <span class="nav-link-text">个人信息管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                    <li>
+                        <a href="">修改我的信息</a>
+                    </li>
+
+                    <li>
+                        <a href="">实名认证</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="student">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#student" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-sitemap"></i>-->
+                    <span class="nav-link-text">学生信息管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="student">
+                    <li>
+                        <a href="">162011</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+
+
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-envelope"></i>
+                    <span class="d-lg-none">Messages
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+                    <span class="indicator text-primary d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-bell"></i>
+                    <span class="d-lg-none">Alerts
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+                    <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                    <h6 class="dropdown-header">New Alerts:</h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item small" href="#">View all alerts</a>
+                </div>
+            </li>
+            <!--搜索功能-->
+            <li class="nav-item">
+                <form action="#" th:action="@{/produceListByName(pageNum=1)}" method="post" class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        欢迎您,  账户
+                        <!--<i id="account_user" class="fa fa-fw fa-sign-out" th:text="${acc}"></i>-->
+                        <input id="account_user" name="account_user" readonly="readonly" th:value="${acc}" class = "btn btn-default btn-link btn-info ">
+                        <!--<span id="account_user" name="account_user" class="text-white" th:text="${acc}"></span>-->
+                    </a>
+                    <div class="input-group">
+                        <input id="searchByName" name="searchByName" class="form-control" type="text" placeholder="Search for...">
+                        <span class="input-group-btn">
+                <!--<button class="btn btn-primary" type="button">搜索</button>-->
+                    <input type="submit" th:value="搜索" class = "btn btn-default btn-lg btn-info ">
+              </span>
+                    </div>
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <!--<a th:href="@{/produce/produce_main(pageNum=1)}">农产品</a>-->
+                <button class = "btn btn-default btn-lg btn-info " onclick="nextProduce()">商家列表</button>
+            </li>
+        </ol>
+        <!-- Example DataTables Card-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i>商家信息列表</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr class="text-center" >
+                            <th>商家号</th>
+                            <th>商家名</th>
+                            <th>商家邮箱</th>
+                            <th>商家电话号</th>
+                            <th>商家状态</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-center" th:each="ab:${AllBus}">
+                            <td th:text="${ab.getBns_id()}"></td>
+                            <td th:text="${ab.getBns_account()}"></td>
+                            <td th:text="${ab.getBns_email()}"></td>
+                            <td th:text="${ab.getBns_phone()}"></td>
+                            <td th:text="${ab.getBns_type()}"></td>
+                            <td>
+                                <!--<a th:href="@{/farm/farm_detail}">-->
+                                <button class="btn btn-default btn-sm btn-warning" th:onclick="|editBus_type(${ab.getBns_id()})|">修改状态</button>
+                        </tr>
+                        </tbody>
+                    </table >
+                    <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                        <tr class="text-center">
+                            <label class="checkbox-inline">当前页面有</label>
+                            <label id="ss" class="checkbox-inline" th:text="${pages}"></label>
+                            <label class="checkbox-inline">页</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label class="checkbox-inline">跳转至第</label>
+                            <input id="page" name="page" type="text"  />页
+                            <button class = "btn btn-default btn-lg btn-info " onclick="tz()">跳转</button>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>南昌航空大学软件学院</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!--模态框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        上架商品
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" action="#" th:action="@{/user/AddComment}">
+                        <input type="hidden" name="data_comment_id" id="data_comment_id">
+                        <div class="form-group">
+                        <label class="col-xl-auto control-label">商家号</label>
+                        <div class="col-sm-10">
+                        <input readonly="readonly" name="data_Bns_id" id="data_Bns_id">
+                        </div>
+                        </div>
+
+                        <select id="bus_type" name="bus_type" class="blockquote">
+                            <option value="已审核">已审核</option>
+                            <option value="未审核">未审核</option>
+                            <option value="审核未通过">审核未通过</option>
+                        </select>
+
+                        <!--<input type="submit" th:value="发布" class = "btn btn-default btn-lg btn-info ">-->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="btn btn-primary subEdit">
+                        修改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+</div>
+<script type="text/javascript">
+    $('.subEdit').click(function(){
+        $.ajax({
+            type:'post',
+            url:'http://114.55.94.1:8080/admin/updateType',
+            data:{
+                data_Bns_id:$('#data_Bns_id').val(),
+                optionsRadios:$('#bus_type').val(),
+            },
+            success:function data(){
+                alert('修改状态成功')
+                window.location.reload();
+            }
+        })
+    })
+    function editBus_type(Bns_id){
+        // window.alert(Bns_id)
+        $.ajax({
+            type:'post',
+            url:'http://114.55.94.1:8080/admin/editBus_type',
+            data:{Bns_id:Bns_id},
+            success:function (data){
+                // alert(data)
+                    $('#data_Bns_id').val(data),
+                $('#myModal').modal('show');
+            }
+        })
+    }
+    function showQuery(data) {
+        $('#comment_id').val(data.comment_id);
+        $('#user_id').val(data.user_id);
+        $('#comment_info').val(data.comment_info);
+        // 显示模态框
+        $('#myModal').modal('show');
+    }
+    function showDetail(produce_id){
+        // window.alert(produce_id)
+        var account_user = document.getElementById("account_user").value;
+
+        location.href = "/farm-0.0.1-SNAPSHOT/produce/produce_detail?produce_id="+produce_id;
+    }
+    function tz(){
+        var account_user = document.getElementById("account_user").value;
+        location.href = "/farm-0.0.1-SNAPSHOT/admin/admin_business_main?pageNum="+spage;
+    }
+    function nextProduce(){
+        location.href = "/farm-0.0.1-SNAPSHOT/admin/admin_business_main?pageNum=1";
+    }
+    function nextFarm(){
+        location.href = "/farm-0.0.1-SNAPSHOT/Bus_farm_main?pageNum=1";
+    }
+    function nextFarmOrd(){
+        var account_user = document.getElementById("account_user").value;
+        // window.alert(account_user)
+
+        var spage=document.getElementById("page").value;
+        location.href = "/farm-0.0.1-SNAPSHOT/farmOrd/farmOrd_main?pageNum=1";
+    }
+    function nextProOrd(){
+        var account_user = document.getElementById("account_user").value;
+        // window.alert(account_user)
+
+        var spage=document.getElementById("page").value;
+        location.href = "/farm-0.0.1-SNAPSHOT/proOrd/proOrd_main?pageNum=1";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>注册</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/static/css/sb-admin.css" rel="stylesheet">
+</head>
+<body class="bg-dark">
+<div class="container">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header">登录</div>
+        <div class="card-body">
+            <form action="#" th:action="@{/farm/registering}" method="post">
+                <div class="form-group">
+                    <!--<label for="exampleInputEmail1">编号</label>-->
+                    <input class="form-control" id="account" name="account" type="text" aria-describedby="userid" placeholder="请输入账户名" onblur="a1()">
+                </div>
+                <div class="form-group">
+                    <!--<label for="exampleInputEmail1">用户名</label>-->
+                    <input class="form-control" id="name" name="name" type="text" aria-describedby="userid" placeholder="请输入用户名" onblur="a1()">
+                </div>
+                <div class="form-group">
+                    <!--<label for="exampleInputPassword1">密码</label>-->
+                    <input class="form-control" id="password" name="password" type="password" placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                    <!--<label for="exampleInputPassword1">邮箱</label>-->
+                    <input class="form-control" id="email" name="email" type="text" placeholder="请输入邮箱">
+                </div>
+                <div class="form-group">
+                    <!--<label for="exampleInputPassword1">电话</label>-->
+                    <input class="form-control" id="phone" name="phone" type="text" placeholder="请输入电话">
+                </div>
+                <div class="form-group">
+                    <!--<label for="exampleInputPassword1">地址</label>-->
+                    <input class="form-control" id="address" name="address" type="text" placeholder="请输入地址">
+                </div>
+
+
+                <div class="form-group">
+                    <!--<label for="exampleInputPassword1">请选择登录身份</label>-->
+                    <!--  <div class="col-sm-8">
+                         <select id="usertype" name="usertype" class="selectpicker show-tick form-control" multiple data-live-search="false">
+                               <option value="0">管理员</option>
+                               <option value="1">教师</option>
+                               <option value="2">学生</option>
+                         </select>
+                    </div>
+                    -->
+                    <div class="radio">
+                        <!--<label class="checkbox-inline">-->
+                            <!--<input type="radio" name="optionsRadios" id="admin"-->
+                                   <!--value="option1" checked> 管理员-->
+                        <!--</label>-->
+                        <label style="color:white">aaaaaaaaa</label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadios" id="teacher"
+                                   value="option2">商家
+                        </label>
+                        <label style="color:white">aaaaaaaaaa</label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optionsRadios" id="student"
+                                   value="option3">用户
+                        </label>
+                    </div>
+
+                </div>
+
+                <input type="submit" value="注         册" class = "btn btn-default btn-lg btn-info ">
+                <a th:href="@{/farm/login}"><button type="button" class="btn btn-default btn-lg btn-info">返回</button></a>
+            </form>
+            <p>
+
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript">
+    function a1(){
+        $.ajax({
+            url:"http://114.55.94.1:8080/farm-0.0.1-SNAPSHOT/ajax/a1",
+            type:"post",
+            data:{"username":$(username).val()},
+            success:function (data,status) {
+                console.log(data)
+                if(data ==="1"){
+
+                }
+                else{
+                    alert(data)
+                    // alert(status)
+                    window.location.reload();
+                }
+            }
+        });
+    }
+</script>
+</body>
+
+</html>

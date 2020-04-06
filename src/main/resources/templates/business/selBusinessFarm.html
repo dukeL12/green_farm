@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商家农场初始页面</title>
+
+    <script>
+        function checkNumber(){
+            var name=document.forms["add"]["farm_name"].value;
+            var gif=document.forms["add"]["farm_gif"].value;
+            var price=document.forms["add"]["farm_price"].value;
+            var locate=document.forms["add"]["farm_locate"].value;
+            var detail=document.forms["add"]["farm_detail"].value;
+            var area=document.forms["add"]["farm_area"].value;
+
+            if (name==null || name==""){
+                alert("[农场名字]必须填写");
+                return false;
+            }
+            if (gif==null || gif==""){
+                alert("[农场图片]必须填写");
+                return false;
+            }
+            if (price==null || price==""){
+                alert("[农场价格]必须填写");
+                return false;
+            }
+            if (locate==null || locate==""){
+                alert("[农场位置]必须填写");
+                return false;
+            }
+            if (detail==null || detail==""){
+                alert("[农场详情]必须填写");
+                return false;
+            }
+            if (area==null || area==""){
+                alert("[农场面积]必须填写");
+                return false;
+            }
+        }
+    </script>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="/css/custom.min.css" rel="stylesheet">
+
+</head>
+<body>
+<h1>欢迎来到农场初始页面</h1>
+<h1 >WELCOME!商家</h1>
+<!--这三行只是一个测试-->
+<!--<div><img src="farm_picture/aa.gif" alt="图片说明" width="40" height="40"></div>-->
+<!--<h1 th:text="${bns_id}"></h1>-->
+<!--<h1 th:text="${farm}"></h1>-->
+<hr>
+<table class="table table-striped" border="0">
+    <tr>
+        <td>
+            <table>
+                <tr th:each="farm,status : ${farm}">
+                    <td><img th:src="@{farm_picture/{farm_gif}(farm_gif=${farm.farm_gif})}" width="200" height="200"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table th:each="farm,status : ${farm}">
+                <tr>
+                    <td>序号</td>
+                    <td th:text="${farm.farm_id}"></td>
+                </tr>
+                <tr><tr>
+                    <td><b>农场名字</b></td>
+                    <td th:text="${farm.farm_name}"></td>
+                </tr>
+                <tr>
+                    <td>价格</td>
+                    <td th:text="${farm.farm_price}"></td>
+                </tr>
+                <tr>
+                    <td>位置</td>
+                    <td th:text="${farm.farm_locate}"></td>
+                </tr>
+                <tr>
+                    <td>拥有者id（这个商家的id）</td>
+                    <td th:text="${farm.bns_id}"></td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td th:text="${farm.farm_detail}"></td>
+                </tr>
+                <tr>
+                    <td>面积</td>
+                    <td th:text="${farm.farm_area}"></td>
+                </tr>
+                <tr>
+                    <td>操作</td>
+                    <td><a th:href="@{/delBusinessFarm(farm_id=${farm.farm_id},bns_id=${farm.bns_id})}"><button>下架</button></a></td>
+                </tr>
+                <br>
+            </table>
+        </td>
+    </tr>
+</table>
+<hr>
+<form action="addBusinessFarm" method="post" name = "add" onsubmit=" return checkNumber()">
+    <h1>上架请在此处填写农场信息</h1>
+    <table>
+        <tr>
+            <td><h3>农场名字</h3></td>
+            <td><input type="text" name="farm_name" id="farm_name" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><h3>农场图片</h3></td>
+            <!--<td><input type="text" name="farm_gif" id="farm_gif" class="form-control"></td>-->
+            <td><input type="file" name="farm_gif" id="farm_gif" accept=".gif,.jpg" /> </td>
+        </tr>
+        <tr>
+            <td><h3>农场价格</h3></td>
+            <td><input type="text" name="farm_price" id="farm_price" class="form-control" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"></td>
+        </tr>
+        <tr>
+            <td><h3>农场位置</h3></td>
+            <td><input type="text" name="farm_locate" id="farm_locate" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><h3>农场详情</h3></td>
+            <td><input type="text" name="farm_detail" id="farm_detail" class="form-control"></td>
+        </tr>
+        <tr>
+            <td><h3>农场面积</h3></td>
+            <td><input type="text" name="farm_area" id="farm_area" class="form-control" onkeyup="value=value.replace(/[^1234567890-]+/g,'')"></td>
+        </tr>
+        <tr>
+            <!--<td><h3>拥有者id</h3></td>-->
+            <td><input type="text" name="bns_id" id="bns_id" class="form-control" th:value = "${bns_id}" hidden></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="submit"></td>
+        </tr>
+    </table>
+</form>
+</body>

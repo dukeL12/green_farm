@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruanku.farm.mapper.LoginMapper">
+<!--用户-->
+    <select id="validUser" parameterType="com.ruanku.farm.entity.User" resultType="com.ruanku.farm.entity.User">
+        SELECT * from user where user_account = #{user_account} AND user_password = #{user_password};
+    </select>
+
+    <select id="userExit" parameterType="String" resultType="com.ruanku.farm.entity.User">
+        SELECT * from user where user_account = #{user_account}
+    </select>
+
+    <select id="findAllUser" resultType="com.ruanku.farm.entity.User">
+        select * from user
+    </select>
+
+    <insert id="newUser" parameterType="com.ruanku.farm.entity.User">
+        insert into user values (null,#{user_account},#{user_name},#{user_password},#{user_email},#{user_phone},#{user_address})
+    </insert>
+
+<!--商家-->
+    <select id="validBusiness" parameterType="com.ruanku.farm.entity.Business" resultType="com.ruanku.farm.entity.Business">
+        SELECT * from Bussiness where bns_account = #{bns_account} AND bns_password = #{bns_password};
+    </select>
+
+    <select id="allowedBusiness" parameterType="com.ruanku.farm.entity.Business" resultType="com.ruanku.farm.entity.Business">
+        SELECT * from Bussiness where bns_account = #{bns_account} AND bns_password = #{bns_password} AND bns_allowed = '1';
+    </select>
+
+    <select id="businessExit" parameterType="String" resultType="com.ruanku.farm.entity.Business">
+        SELECT * from Bussiness where bns_account = #{bns_account}
+    </select>
+
+    <select id="findAllBusiness" resultType="com.ruanku.farm.entity.Business">
+        select * from Business
+    </select>
+
+    <insert id="newBusiness" parameterType="com.ruanku.farm.entity.Business">
+        insert into Bussiness(bns_account,bns_name,bns_password,bns_email,bns_phone,bns_address,bns_allowed) values (#{bns_account},#{bns_name},#{bns_password},#{bns_email},#{bns_phone},#{bns_address},#{bns_allowed})
+    </insert>
+
+<!--管理员-->
+    <select id="validAdmin" parameterType="com.ruanku.farm.entity.Admin" resultType="com.ruanku.farm.entity.Admin">
+        SELECT * from Admin where admin_account = #{admin_account} AND admin_password = #{admin_password};
+    </select>
+</mapper>

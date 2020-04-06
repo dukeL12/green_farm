@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../config/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Repository接口 -->
+<mapper namespace="com.ruanku.farm.mapper.OrderMapper">
+
+    <select id="find_orderByUserId" resultType="com.ruanku.farm.pojo.Order">
+        select * from FarmOrd where user_id = #{user_id}
+    </select>
+    <insert id="User_inFarmOrder">
+        insert into FarmOrd(FarmOrd_name ,user_id, farm_id, FarmOrd_type) values(#{FarmOrd_name} ,#{user_id}, #{farm_id}, #{FarmOrd_type})
+    </insert>
+</mapper>

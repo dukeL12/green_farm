@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../config/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Repository接口 -->
+<mapper namespace="com.ruanku.farm.mapper.ProduceMapper">
+
+    <select id="find_produce" resultType="com.ruanku.farm.pojo.Produce">
+        select * from Produce
+    </select>
+    <select id="find_produceByName" resultType="com.ruanku.farm.pojo.Produce">
+        select * from Produce where Pro_name like "%"#{searchByName}"%"
+    </select>
+    <select id="find_produceById" resultType="com.ruanku.farm.pojo.Produce">
+        select * from Produce where Pro_id = #{pro_id}
+    </select>
+
+    <select id="user_SelproduceById" resultType="com.ruanku.farm.pojo.Produce">
+        select * from Produce where Pro_id = #{pro_id}
+    </select>
+
+    <insert id="inProByBus">
+        insert into Produce ( Pro_name, Pro_gif, Pro_price, Pro_address, Bns_id, pro_type, Pro_Detail, type_id) value ( #{Pro_name}, #{Pro_gif}, #{Pro_price}, #{Pro_address}, #{Bns_id}, #{pro_type}, #{Pro_Detail}, #{type_id})
+    </insert>
+
+    <delete id="delProById">
+        delete from Produce where Pro_id=#{Pro_id}
+    </delete>
+</mapper>

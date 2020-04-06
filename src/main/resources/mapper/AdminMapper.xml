@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruanku.farm.mapper.AdminMapper">
+    <!--农场-->
+    <select id="selAllBusiness" resultType="com.ruanku.farm.entity.Business">
+        select * from business where bns_allowed = 0
+    </select>
+
+    <update id="upBusiness" parameterType="int" >
+        update business set bns_allowed = 1 where bns_id = #{bns_id}
+    </update>
+
+    <select id="selAdminByAcc" resultType="com.ruanku.farm.pojo.Admin">
+        select * from Admin where Admin_account = #{Account}
+    </select>
+    <select id="selAllBus" resultType="com.ruanku.farm.pojo.Bussiness">
+        select * from Bussiness
+    </select>
+</mapper>
