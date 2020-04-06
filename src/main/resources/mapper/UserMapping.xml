@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../config/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Repository接口 -->
+<mapper namespace="com.ruanku.farm.mapper.UserMapping">
+
+    <select id="selUserByAccount" resultType="com.ruanku.farm.pojo.User" parameterType="String">
+        select * from User where user_account = #{user_account}
+    </select>
+
+    <select id="selUserIdByAccount" resultType="int" parameterType="String">
+        select user_id from User where user_account = #{user_account}
+    </select>
+
+    <insert id="inUser"  parameterType="String">
+        insert into User (user_account, user_name, user_password, user_email, user_phone, user_address) values(#{account}, #{name}, #{password}, #{email}, #{phone}, #{address})
+    </insert>
+</mapper>

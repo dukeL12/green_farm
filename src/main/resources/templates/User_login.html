@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>生活带点绿</title>
+   <!--Bootstrap core CSS-->
+  <link href="/static/vendor/bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template-->
+  <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template-->
+  <link href="/static/css/sb-admin.css" rel="stylesheet">
+</head>
+<body class="bg-dark">
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header" th:text="#{login.tip}">Sign In</div>
+      <div class="card-body">
+        <form action="#" th:action="@{/user_main}" method="post">
+          <div class="form-group">
+            <!--<label for="exampleInputEmail1">编号</label>-->
+            <input class="form-control" id="user_account" name="account" type="text" aria-describedby="userid" th:placeholder="#{User.tip}" onblur="a1()">
+          </div>
+          <div class="form-group">
+            <!--<label for="exampleInputPassword1">密码</label>-->
+            <input class="form-control" id="user_password" name="password" type="password" th:placeholder="#{password.tip}">
+          </div>
+          
+           <div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox">[[#{remmber.tip}]]</label>
+            </div>
+          </div>
+          
+           <div class="form-group">
+	            <!--<label for="exampleInputPassword1">请选择登录身份</label>-->
+	           <!--  <div class="col-sm-8">
+	                <select id="usertype" name="usertype" class="selectpicker show-tick form-control" multiple data-live-search="false">
+	                      <option value="0">管理员</option>
+	                      <option value="1">教师</option>
+	                      <option value="2">学生</option>
+	                </select>
+	           </div>
+	           --> 
+	           <div class="radio">
+  				  <label class="checkbox-inline">
+     				 <input type="radio" name="optionsRadios" id="admin" 
+         					value="option1" checked> [[#{admin.tip}]]
+   				  </label>
+   				  <label style="color:white">aaaaaaaaa</label>
+   				 <label class="checkbox-inline">
+    			      <input type="radio" name="optionsRadios" id="seller"
+                        value="option2">[[#{seller.tip}]]
+                 </label>
+                  <label style="color:white">aaaaaaaaaa</label>
+                 <label class="checkbox-inline">
+    			      <input type="radio" name="optionsRadios" id="user"
+                        value="option3">[[#{user.tip}]]
+                 </label>
+				</div>
+	           
+           </div>
+          
+          <input type="submit" th:value="#{login2.tip}" class = "btn btn-default btn-lg btn-info ">
+          <a th:href="@{/farm/register}"><button type="button" class="btn btn-default btn-lg btn-info">[[#{register.tip}]]</button></a>
+          </form>
+        <p>
+        <div class="text-center">
+          <a class="d-block small" href="忘记密码.html">[[#{password2.tip}]]</a>
+        <a href="#" class="btn btn-sm" th:href="@{/farm/login(lg='zh_CN')}">中文</a>
+        <a href="#" class="btn btn-sm" th:href="@{/farm/login(lg='en_US')}">English</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+   <!--Bootstrap core JavaScript-->
+  <script src="/static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+</body>
+
+</html>

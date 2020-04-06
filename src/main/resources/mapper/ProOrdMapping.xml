@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../config/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Repository接口 -->
+<mapper namespace="com.ruanku.farm.mapper.ProOrdMapper">
+
+    <select id="find_ProOrderByUserId" resultType="com.ruanku.farm.pojo.ProOrd">
+        select * from ProOrd where user_id = #{user_id}
+    </select>
+    <select id="find_ProOrdByProId" resultType="com.ruanku.farm.pojo.ProOrd">
+        select * from ProOrd where ProOrd_id = #{ProOrd_id}
+    </select>
+    <insert id="User_inProOrd">
+        insert into ProOrd(ProOrd_name ,user_id, Pro_id,ProOrd_type ) values(#{ProOrd_name} ,#{user_id}, #{Pro_id}, #{ProOrd_type})
+    </insert>
+
+    <select id="user_selProIdById" resultType="com.ruanku.farm.pojo.ProOrd">
+        select * from ProOrd where ProOrd_id = #{ProOrd_id}
+    </select>
+    <update id="update_ProOrdType" parameterType="com.ruanku.farm.pojo.ProOrd">
+        update ProOrd set ProOrd_type=#{ProOrd_type} where ProOrd_id=#{ProOrd_id}
+    </update>
+
+    <select id="selProOrdTypeById" resultType="String">
+        select ProOrd_type from ProOrd where ProOrd_id = #{ProOrd_id}
+    </select>
+</mapper>

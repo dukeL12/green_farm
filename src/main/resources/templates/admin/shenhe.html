@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商家审核页面</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="/css/custom.min.css" rel="stylesheet">
+
+</head>
+<body>
+<h1>欢迎来到商家审核初始页面</h1>
+<h1 >WELCOME!管理员</h1>
+<!--这三行只是一个测试-->
+<!--<div><img src="farm_picture/aa.gif" alt="图片说明" width="40" height="40"></div>-->
+<!--<h1 th:text="${bns_id}"></h1>-->
+<!--<h1 th:text="${farm}"></h1>-->
+<hr>
+<table class="table table-striped" border="0">
+    <tr>
+            <table th:each="bns,status : ${business}">
+                <tr>
+                    <td>序号</td>
+                    <td th:text="${bns.bns_id}"></td>
+                </tr>
+                <tr>
+                <td><b>商家账号</b></td>
+                <td th:text="${bns.bns_account}"></td>
+                </tr>
+                <tr>
+                    <td><b>商家名字</b></td>
+                    <td th:text="${bns.bns_name}"></td>
+                </tr>
+                <tr>
+                    <td>商家邮箱</td>
+                    <td th:text="${bns.bns_email}"></td>
+                </tr>
+                <tr>
+                    <td>商家电话</td>
+                    <td th:text="${bns.bns_phone}"></td>
+                </tr>
+                <tr>
+                    <td>商家地址</td>
+                    <td th:text="${bns.bns_address}"></td>
+                </tr>
+                <tr>
+                    <td>备注</td>
+                    <td ><text>未审核</text></td>
+                </tr>
+
+                <tr>
+                    <td>操作</td>
+                    <td><a th:href="@{/kalabuok(bns_id=${bns.bns_id})}"><button>审核通过</button></a></td>
+                </tr>
+                <br>
+            </table>
+    </tr>
+</table>
+<hr>
+
+</body>

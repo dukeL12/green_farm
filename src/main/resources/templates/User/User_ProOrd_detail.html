@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>我的订单</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">-->
+    <!--<title>图书详情界面</title>-->
+    <!--<link href="/static/css/style1.css" rel="stylesheet">-->
+    <!--<link href="/static/css/bootstrap.css" rel="stylesheet">-->
+    <style type="text/css">
+        #left{
+            width:400px;
+            heigth:500px;
+            float:left;
+            margin-left:200px;
+            margin-top:50px;
+        }
+        #right{
+            width:500px;
+            heigth:300px;
+            float:left;
+            margin-left:50px;
+            margin-top:50px;
+        }
+        #rightB{
+            width:500px;
+            heigth:200px;
+            float:left;
+            margin-left:50px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="left">
+
+    <table  th:each="pop:${ProOrdByProId}">
+        <tr >
+            <td width="400px" height="500px" colspan="4"><img th:src="${pl.getPro_gif()}"   style="width:400px ;height:500px"/></td>
+        </tr>
+
+    </table>
+</div>
+<div id="right">
+    <table  >
+        <!--<c:forEach items="${list}" var="bean">-->
+        <tr >
+            <td  width="500px" height="60px">订单状态:&nbsp;&nbsp;&nbsp;<font size=5 color=red style="font-weight:bolder" th:text="${ProOrd_type}"></font></td>
+        </tr>
+        <tr th:each="pl:${proList}">
+            <td  width="500px" height="60px">订单价格:&nbsp;&nbsp;&nbsp;<font size=5 color=red style="font-weight:bolder" th:text="${pl.getPro_price()}"></font></td>
+        </tr>
+        <tr >
+            <td width="500px" height="30px">运费:&nbsp;&nbsp;&nbsp;<font size=4 face=黑体>0</font></td>
+        </tr>
+        <tr >
+            <td width="500px" height="30px">账户名:&nbsp;&nbsp;&nbsp;<font size=4 face=黑体 th:text="${user_account}"></font></td>
+        </tr>
+        <tr >
+            <td width="500px" height="30px">订单名:&nbsp;&nbsp;&nbsp;<font size=4 face=黑体 th:text="${ProOrd_name}"></font></td>
+        </tr>
+        <!--<tr >-->
+        <!--<td width="500px" height="60px">农产品简介:&nbsp;&nbsp;&nbsp;<font size=4 face=黑体 text=""></font></td>-->
+        <!--</tr>-->
+        <!--<tr >-->
+        <!--<td width="500px" height="60px">作者 :&nbsp;&nbsp;&nbsp;<font size=4 face=黑体>${bean.author}</font></td>-->
+        <!--</tr>-->
+        <!--<tr >-->
+        <!--<td width="500px" height="60px">出版日期:&nbsp;&nbsp;&nbsp;<font size=4 face=黑体>${bean.publicationDate}</font></td>-->
+        <!--</tr>-->
+        <!--</c:forEach>-->
+    </table>
+</div>
+<div id="rightB">
+    <form name="frm" action="shoppingAddDo" >
+        <table >
+            <!--<c:forEach items="${list}" var="bean">-->
+            <!--<tr>-->
+            <!--<td rowspan="2" style="width:60px;height:60px">数量:</td>-->
+            <!--<td rowspan="2" style="width:50px;height:60px"><input type="text" id="num" name="num" value="1" style="width:40px;height:40px"></td>-->
+            <!--<td style="width:40px"><input type="button" name="add" value="+" style="width:30px;height:20px;background-color:#fff" onclick="Baking()"></td>-->
+            <!--<td rowspan="2" style="width:80px">件&nbsp;&nbsp;库存:${bean.stock}</td>-->
+            <!--<td rowspan="2"></td>-->
+            <!--<td rowspan="2" style="width:80px"></td>-->
+            <!--<td rowspan="2"><input type="hidden" name="bookId" value="${bean.bookId}"></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td><input type="button" name="del" value="-" style="width:30px;height:20px;background-color:#fff" onclick="minus()"></td>-->
+            <!--</tr>-->
+            <tr>
+                <td colspan="6" style="width:500px;height:80px" align="center" valign="middle" >
+                    <!--<a class="btn btn-info" style="width:140px;height:40px"  href='javascript:fukuan(${bean.bookId})'><font size="4">立即付款</font></a>-->
+                    <a ><button type="button" class="btn btn-default btn-lg btn-info">购买</button></a>
+                    <a ><button type="button" class="btn btn-default btn-lg btn-info">返回</button></a>
+                </td>
+
+            </tr>
+            <tr >
+                <td colspan="6" style="width:500px;height:80px" align="right" >
+                    <a class="btn btn-primary" style="width:100px;height:40px"  href='MessageList?receive=admin&send=<%=(String) session.getAttribute("username")%>'><font size="4">客服</font></a></td>
+            </tr>
+            <!--</c:forEach>-->
+        </table>
+    </form>
+</div>
+</body>
+</html>

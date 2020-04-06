@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruanku.farm.mapper.BusinessMapper">
+    <!--农场-->
+    <select id="selFarm" parameterType="int" resultType="com.ruanku.farm.entity.Farm">
+        SELECT * From Farm where bns_id = #{bns_id};
+    </select>
+
+    <delete id="delFarm" parameterType="int">
+        delete from Farm where farm_id = #{farm_id};
+    </delete>
+
+    <insert id="addFarm" parameterType="com.ruanku.farm.entity.Farm">
+        insert into Farm values (null,#{farm_name},#{farm_gif},#{farm_price},#{farm_locate},#{bns_id},#{farm_detail},#{farm_area})
+    </insert>
+
+    <!--农产品-->
+    <select id="selProduce" parameterType="int" resultType="com.ruanku.farm.entity.Produce">
+        SELECT * from Produce where bns_id = #{bns_id};
+    </select>
+
+    <delete id="delProduce" parameterType="int">
+        delete from Produce where pro_id = #{pro_id};
+    </delete>
+
+    <insert id="addProduce" parameterType="com.ruanku.farm.entity.Produce">
+        insert into Produce values (null,#{pro_name},#{pro_gif},#{pro_price},#{pro_address},#{bns_id},#{pro_type},#{pro_Detail},null)
+    </insert>
+
+    <select id="selBusByAcc" resultType="com.ruanku.farm.pojo.Bussiness">
+        select * from Bussiness where Bns_account = #{Bns_account}
+    </select>
+
+    <update id="editBusType" >
+        update Bussiness set Bns_type=#{Bns_type} where Bns_id=#{Bns_id}
+    </update>
+
+    <select id="selBusById" resultType="com.ruanku.farm.pojo.Bussiness">
+        select * from Bussiness where Bns_id = #{Bns_id}
+    </select>
+
+    <select id="selProById" resultType="com.ruanku.farm.pojo.Produce">
+        select * from Produce where Bns_id = #{Bns_id}
+    </select>
+</mapper>

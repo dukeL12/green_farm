@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>绿色农场</title>
+    <!-- Bootstrap core CSS-->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="/static/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/datatables/dataTables.bootstrap4.js"></script>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="">商家主页面</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="teacher">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-sitemap"></i>-->
+                    <span class="nav-link-text">个人信息管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                    <li>
+                        <a href="">修改我的信息</a>
+                    </li>
+
+                    <li>
+                        <a href="">实名认证</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="student">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#student" data-parent="#exampleAccordion">
+                    <!--<i class="fa fa-fw fa-sitemap"></i>-->
+                    <span class="nav-link-text">学生信息管理</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="student">
+                    <li>
+                        <a href="">162011</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+
+
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-envelope"></i>
+                    <span class="d-lg-none">Messages
+              <span class="badge badge-pill badge-primary">12 New</span>
+            </span>
+                    <span class="indicator text-primary d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-bell"></i>
+                    <span class="d-lg-none">Alerts
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+                    <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <form action="#" th:action="@{/farmListByName(pageNum=1)}" method="post" class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        欢迎您,  账户
+                        <!--<i id="account_user" class="fa fa-fw fa-sign-out" th:text="${acc}"></i>-->
+                        <input id="account_user" name="account_user" readonly="readonly" th:value="${acc}" class = "btn btn-default btn-link btn-info ">
+                        <!--<span id="account_user" name="account_user" class="text-white" th:text="${acc}"></span>-->
+                    </a>
+                    <div class="input-group">
+                        <input id="searchByName" name="searchByName" class="form-control" type="text" placeholder="Search for...">
+                        <span class="input-group-btn">
+                <!--<button class="btn btn-primary" type="button">搜索</button>-->
+                    <input type="submit" th:value="搜索" class = "btn btn-default btn-lg btn-info ">
+              </span>
+                    </div>
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                </form>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <!--<a th:href="@{/produce/produce_main(pageNum=1)}">农产品</a>-->
+                <button class = "btn btn-default btn-lg btn-info " onclick="nextBusiness()">商家列表</button>
+            </li>
+        </ol>
+
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>南昌航空大学软件学院</small>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+</div>
+<script type="text/javascript">
+    $('.sendNote').click(function(){
+        $.ajax({
+            type:'post',
+            url:'http://localhost:8080/telphone',
+            data:{
+            },
+            success:function data(){
+                alert('获取验证码成功')
+                window.location.reload();
+            }
+        })
+    })
+    $('.sendMail').click(function(){
+        $.ajax({
+            type:'post',
+            url:'http://localhost:8080/send',
+            data:{
+                send_mail_info:$('#send_mail_info').val(),
+            },
+            success:function data(){
+                alert('反馈问题成功')
+                window.location.reload();
+            }
+        })
+    })
+    function nextComment(farm_id){
+        // window.alert(farm_id)
+        var account_user = document.getElementById("account_user").value;
+
+        location.href = "/user/SelCommentAll?pageNum=1";
+    }
+    function showDetail(farm_id){
+        // window.alert(farm_id)
+        var account_user = document.getElementById("account_user").value;
+
+        location.href = "/farm/farm_detail?farm_id="+farm_id;
+    }
+    function tz(){
+        var account_user = document.getElementById("account_user").value;
+        // window.alert(account_user)
+
+        var spage=document.getElementById("page").value;
+        location.href = "/farmList?pageNum="+spage;
+    }
+    function nextBusiness(){
+        location.href = "/admin/admin_business_main?pageNum=1";
+    }
+    function nextFarm(){
+        location.href = "/Bus_farm_main?pageNum=1";
+    }
+    function nextFarmOrd(){
+        var account_user = document.getElementById("account_user").value;
+        // window.alert(account_user)
+
+        var spage=document.getElementById("page").value;
+        location.href = "/farmOrd/farmOrd_main?pageNum=1";
+    }
+    function nextProOrd(){
+        var account_user = document.getElementById("account_user").value;
+        // window.alert(account_user)
+
+        var spage=document.getElementById("page").value;
+        location.href = "/proOrd/proOrd_main?pageNum=1";
+    }
+</script>
+</body>
+</html>

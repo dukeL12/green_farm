@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../config/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Repository接口 -->
+<mapper namespace="com.ruanku.farm.mapper.FarmMapper">
+
+    <select id="find_farm" resultType="com.ruanku.farm.pojo.Farm">
+        select * from Farm
+    </select>
+    <select id="find_farmByName" resultType="com.ruanku.farm.pojo.Farm">
+        select * from Farm where farm_name like "%"#{searchByName}"%"
+    </select>
+
+    <select id="find_farmById" resultType="com.ruanku.farm.pojo.Farm">
+        select * from Farm where farm_id= #{farm_id}
+    </select>
+</mapper>

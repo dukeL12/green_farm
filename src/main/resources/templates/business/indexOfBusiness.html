@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>农场初始页面</title>
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="login">
+<div class="login_wrapper">
+    <div class="animate form login_form">
+        <table>
+            <tr><h1>商家初始页面</h1></tr>
+            <tr>
+                <td><h2>您好!</h2></td>
+                <td><h2 th:text="${business.bns_name}"></h2></td>
+            </tr>
+        </table>
+        <br>
+        <form action="selBusinessFarm" method="post">
+            <input type="submit" value="进入农场页面">
+            <input type="hidden" name="bns_id" th:value="${business.bns_id}">
+        </form>
+        <br>
+        <form action="selBusinessProduce" method="post">
+            <input type="submit" value="进入农产品页面">
+            <input type="hidden" name="bns_id" th:value="${business.bns_id}">
+        </form>
+    </div>
+</div>
+</body>
+</html>

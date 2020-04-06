@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../config/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Repository接口 -->
+<mapper namespace="com.ruanku.farm.mapper.MessageMapper">
+
+    <select id="selMessByRR" resultType="com.ruanku.farm.pojo.Message">
+        select * from Message where (Message_receiveId = #{Message_receiveId} and Message_sendId = #{Message_sendId}) or (Message_receiveId = #{Message_sendId} and Message_sendId = #{Message_receiveId})
+    </select>
+    <insert id="userInMess">
+        insert into Message(Message_receiveId, Message_sendId, Message_info) values(#{Message_receiveId} ,#{Message_sendId}, #{Message_info})
+    </insert>
+
+</mapper>
